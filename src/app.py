@@ -10,10 +10,10 @@ def main():
 @app.route('/check',methods=['POST','GET'])
 def check():
     try:
-        _vinNumber = request.form['vinNumber']
+        _vinNumber = request.form['vinNumber'].upper()
         mess_true = 'Số vin ' + _vinNumber + ' nằm trong diện triệu hồi, hãy liên hệ với đại lý để được kiểm tra và thay thế.'
         if len(_vinNumber) == 17 and _vinNumber[:3] == 'RLA':
-            vin_left = _vinNumber[:10]
+            vin_left =  _vinNumber[:10]
             vin_right = int(_vinNumber[-7:])
             if vin_left == 'RLA0TGF2MH' and 1000003 <= vin_right <= 1000032:
                 return mess_true
